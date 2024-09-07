@@ -51,7 +51,7 @@ const PostJob = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:4000/api/jobs/post", jobData, {
+      const res = await axios.post("https://job-seeker-server-bbul.onrender.com/api/jobs/post", jobData, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,7 @@ const MyJobs = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/jobs/myJobs", { withCredentials: true });
+        const { data } = await axios.get("https://job-seeker-server-bbul.onrender.com/api/jobs/myJobs", { withCredentials: true });
         setMyJobs(data.myJobs);
       } catch (error) {
         const message = error.response?.data?.message || "Error fetching jobs";
@@ -46,7 +46,7 @@ const MyJobs = () => {
   const handleUpdateJob = async (jobId) => {
     const updatedJob = myJobs.find((job) => job._id === jobId);
     try {
-      const { data } = await axios.put(`http://localhost:4000/api/jobs/update/${jobId}`, updatedJob, { withCredentials: true });
+      const { data } = await axios.put(`https://job-seeker-server-bbul.onrender.com/api/jobs/update/${jobId}`, updatedJob, { withCredentials: true });
       toast.success(data.message);
       setEditingMode(null);
     } catch (error) {
@@ -57,7 +57,7 @@ const MyJobs = () => {
 
   const handleDeleteJob = async (jobId) => {
     try {
-      const { data } = await axios.delete(`http://localhost:4000/api/jobs/delete/${jobId}`, { withCredentials: true });
+      const { data } = await axios.delete(`https://job-seeker-server-bbul.onrender.com/api/jobs/delete/${jobId}`, { withCredentials: true });
       toast.success(data.message);
       setMyJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
     } catch (error) {

@@ -17,8 +17,8 @@ const MyApplications = () => {
     const fetchApplications = async () => {
       try {
         const url = user && user.role === "Employer" ? 
-          "http://localhost:4000/api/application/employer/getall" :
-          "http://localhost:4000/api/application/jobseeker/getall";
+          "https://job-seeker-server-bbul.onrender.com/api/application/employer/getall" :
+          "https://job-seeker-server-bbul.onrender.com/api/application/jobseeker/getall";
 
         const res = await axios.get(url, { withCredentials: true });
         setApplications(res.data.applications);
@@ -39,7 +39,7 @@ const MyApplications = () => {
 
   const deleteApplication = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:4000/api/application/delete/${id}`, {
+      const res = await axios.delete(`https://job-seeker-server-bbul.onrender.com/api/application/delete/${id}`, {
         withCredentials: true,
       });
       toast.success(res.data.message);

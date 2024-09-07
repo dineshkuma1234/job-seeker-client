@@ -13,7 +13,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/jobs/${id}`, {
+      .get(`https://job-seeker-server-bbul.onrender.com/api/jobs/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

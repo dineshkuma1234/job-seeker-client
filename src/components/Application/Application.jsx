@@ -38,6 +38,9 @@ const Application = () => {
         formData,
         {
           withCredentials: true,
+          body: {
+            token: localStorage.getItem("token")
+          },
           headers: {
             "Content-Type": "multipart/form-data",
           },

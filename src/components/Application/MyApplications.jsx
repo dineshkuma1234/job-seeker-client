@@ -20,7 +20,9 @@ const MyApplications = () => {
           "https://job-seeker-server-bbul.onrender.com/api/application/employer/getall" :
           "https://job-seeker-server-bbul.onrender.com/api/application/jobseeker/getall";
 
-        const res = await axios.get(url, { withCredentials: true });
+        const res = await axios.get(url, { withCredentials: true,body: {
+          token: localStorage.getItem("token")
+        } });
         setApplications(res.data.applications);
       } catch (error) {
         const message = error.response?.data?.message || "Failed to fetch applications.";

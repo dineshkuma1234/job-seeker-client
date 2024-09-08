@@ -15,6 +15,9 @@ const JobDetails = () => {
     axios
       .get(`https://job-seeker-server-bbul.onrender.com/api/jobs/${id}`, {
         withCredentials: true,
+        body: {
+          token: localStorage.getItem("token")
+        }
       })
       .then((res) => {
         setJob(res.data.job);

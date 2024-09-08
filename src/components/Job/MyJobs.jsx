@@ -16,7 +16,9 @@ const MyJobs = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const { data } = await axios.get("https://job-seeker-server-bbul.onrender.com/api/jobs/myJobs", { withCredentials: true });
+        const { data } = await axios.get("https://job-seeker-server-bbul.onrender.com/api/jobs/myJobs", { withCredentials: true,body: {
+          token: localStorage.getItem("token")
+        } });
         setMyJobs(data.myJobs);
       } catch (error) {
         const message = error.response?.data?.message || "Error fetching jobs";

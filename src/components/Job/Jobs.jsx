@@ -12,6 +12,9 @@ const Jobs = () => {
       axios
         .get("https://job-seeker-server-bbul.onrender.com/api/jobs/getall", {
           withCredentials: true,
+          body: {
+            token: localStorage.getItem("token")
+          }
         })
         .then((res) => {
           setJobs(res.data);

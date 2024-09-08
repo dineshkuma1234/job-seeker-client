@@ -27,12 +27,15 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      toast.success(data.message);
-      // localSstorage.setItem("token", )
-      setEmail("");
-      setPassword("");
-      setRole("");
-      setIsAuthorized(true);
+      if(data?.success){
+        toast.success(data.message);
+        localStorage.setItem("token",data?.token )
+        setEmail("");
+        setPassword("");
+        setRole("");
+        setIsAuthorized(true);
+      }
+     
     } catch (error) {
       toast.error(error.response.data.message);
     }

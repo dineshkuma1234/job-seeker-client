@@ -53,10 +53,8 @@ const PostJob = () => {
     try {
       const res = await axios.post("https://job-seeker-server-bbul.onrender.com/api/jobs/post", jobData, {
         headers: {
-          token: localStorage?.getItem("token")
-        },
-        headers: {
           "Content-Type": "application/json",
+          token: localStorage?.getItem("token")
         },
       });
       toast.success(res.data.message);

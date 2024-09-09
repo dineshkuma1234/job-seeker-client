@@ -16,8 +16,8 @@ const MyJobs = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const { data } = await axios.get("https://job-seeker-server-bbul.onrender.com/api/jobs/myJobs", { withCredentials: true,body: {
-          token: localStorage.getItem("token")
+        const { data } = await axios.get("https://job-seeker-server-bbul.onrender.com/api/jobs/myJobs", {headers: {
+          token: localStorage?.getItem("token")
         } });
         setMyJobs(data.myJobs);
       } catch (error) {
@@ -48,7 +48,9 @@ const MyJobs = () => {
   const handleUpdateJob = async (jobId) => {
     const updatedJob = myJobs.find((job) => job._id === jobId);
     try {
-      const { data } = await axios.put(`https://job-seeker-server-bbul.onrender.com/api/jobs/update/${jobId}`, updatedJob, { withCredentials: true });
+      const { data } = await axios.put(`https://job-seeker-server-bbul.onrender.com/api/jobs/update/${jobId}`, updatedJob, {  headers: {
+        token: localStorage?.getItem("token")
+      } });
       toast.success(data.message);
       setEditingMode(null);
     } catch (error) {
@@ -59,7 +61,9 @@ const MyJobs = () => {
 
   const handleDeleteJob = async (jobId) => {
     try {
-      const { data } = await axios.delete(`https://job-seeker-server-bbul.onrender.com/api/jobs/delete/${jobId}`, { withCredentials: true });
+      const { data } = await axios.delete(`https://job-seeker-server-bbul.onrender.com/api/jobs/delete/${jobId}`, {headers: {
+      token: localStorage?.getItem("token")
+      } });
       toast.success(data.message);
       setMyJobs((prevJobs) => prevJobs.filter((job) => job._id !== jobId));
     } catch (error) {

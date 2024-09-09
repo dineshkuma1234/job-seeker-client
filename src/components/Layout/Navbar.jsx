@@ -15,7 +15,9 @@ const Navbar = () => {
       const response = await axios.get(
         "https://job-seeker-server-bbul.onrender.com/api/v1/users/logout",
         {
-          withCredentials: true,
+          headers: {
+            token: localStorage?.getItem("token")
+          }
         }
       );
       toast.success(response.data.message);

@@ -26,7 +26,9 @@ const App = () => {
         const response = await axios.get(
           "https://job-seeker-server-bbul.onrender.com/api/v1/users/getuser",
           {
-            withCredentials: true,
+            headers: {
+              token: localStorage?.getItem("token")
+            }
           }
         );
         setUser(response.data.user);

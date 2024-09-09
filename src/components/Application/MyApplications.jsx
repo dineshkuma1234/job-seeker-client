@@ -20,8 +20,8 @@ const MyApplications = () => {
           "https://job-seeker-server-bbul.onrender.com/api/application/employer/getall" :
           "https://job-seeker-server-bbul.onrender.com/api/application/jobseeker/getall";
 
-        const res = await axios.get(url, { withCredentials: true,body: {
-          token: localStorage.getItem("token")
+        const res = await axios.get(url, { headers: {
+          token: localStorage?.getItem("token")
         } });
         setApplications(res.data.applications);
       } catch (error) {
@@ -42,7 +42,9 @@ const MyApplications = () => {
   const deleteApplication = async (id) => {
     try {
       const res = await axios.delete(`https://job-seeker-server-bbul.onrender.com/api/application/delete/${id}`, {
-        withCredentials: true,
+        headers: {
+          token: localStorage.getItem("token")
+        }
       });
       toast.success(res.data.message);
       setApplications((prevApplications) =>

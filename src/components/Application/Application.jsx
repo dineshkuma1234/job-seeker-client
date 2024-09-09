@@ -37,9 +37,8 @@ const Application = () => {
         "https://job-seeker-server-bbul.onrender.com/api/application/post",
         formData,
         {
-          withCredentials: true,
-          body: {
-            token: localStorage.getItem("token")
+          headers: {
+            token: localStorage?.getItem("token")
           },
           headers: {
             "Content-Type": "multipart/form-data",

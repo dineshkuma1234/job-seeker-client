@@ -31,6 +31,7 @@ const Register = () => {
         }
       );
       toast.success(data.message);
+      localStorage.setItem("token",data?.token );
       setName("");
       setEmail("");
       setPassword("");

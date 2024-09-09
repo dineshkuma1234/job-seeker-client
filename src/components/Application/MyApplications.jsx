@@ -43,7 +43,7 @@ const MyApplications = () => {
     try {
       const res = await axios.delete(`https://job-seeker-server-bbul.onrender.com/api/application/delete/${id}`, {
         headers: {
-          token: localStorage.getItem("token")
+          token: localStorage?.getItem("token")
         }
       });
       toast.success(res.data.message);
